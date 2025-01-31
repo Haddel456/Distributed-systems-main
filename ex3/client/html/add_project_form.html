@@ -1,0 +1,143 @@
+<!-- index.html -->
+<!doctype html>
+<html>
+<head>
+    <title>ADD projrct</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!-- load jquery via CDN -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+    <link rel="stylesheet" href="/css/massege.css">
+    <script src="/js/image.js"></script>
+    <script src="/js/validation.js"></script>
+    <script src="/js/project.js"></script>
+    <!-- load bootstrap via CDN -->
+    
+</head>
+
+<body>
+    <div class="col-sm-6 col-sm-offset-3">
+
+        <h2>Add new project</h2>
+       <br>
+
+        <!-- OUR FORM -->
+        <form id="project_form" name="project_form" >
+
+            <fieldset>
+                <!-- NAME -->
+                <legend>Project Details</legend>
+                <div id="name-group" class="form-group">
+                    <label for="name">Project Name</label>
+                    <input type="text" class="form-control" name="name" id="username" placeholder="Enter project name" required>
+                    <!-- errors will go here -->
+                </div>
+    
+                <div id="name-group" class="form-group">
+                    <label for="projectDescription">Project Description</label>
+                    <input type="text" class="form-control" minlength="20" name="summary" id="projectDescription"
+                        placeholder="Enter project description" required>
+                    <!-- errors will go here -->
+                </div>
+    
+                <div id="name-group" class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" class="form-control" name="start_date" id="StartDate" placeholder="Enter start Date" required>
+                    <!-- errors will go here -->
+                </div>
+    
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Project Manager</legend>
+                <!-- Manager -->
+                <div id="name-group" class="form-group">
+                    <label for="managerName">Manager's Name</label>
+                    <input type="text" class="form-control" name="manager[name]" placeholder="Enter Manager name" required>
+                    <!-- errors will go here -->
+                </div>
+    
+                <!-- EMAIL -->
+                <div id="email-group" class="form-group">
+                    <label for="managerEmail">Manager's Email</label>
+                    <input type="email" class="form-control" name="manager[email]" placeholder="rudd@avengers.com" required>
+                    <!-- errors will go here -->
+                </div>
+            </fieldset>
+    
+            <br>
+            <fieldset>
+                <legend>Project Team</legend>
+                <!-- Project Team -->
+                <div id="teamList">
+                    <div class="team-member">
+                        <div id="name-group" class="form-group">
+                            <label for="teamMemberName">Team Member's Name</label>
+                            <input type="text" class="form-control" name="team[0][name]" id="teamMemberName"
+                                placeholder="Enter team Member Name" required>
+                            <!-- errors will go here -->
+                        </div>
+    
+                        <!-- EMAIL -->
+                        <div id="email-group" class="form-group">
+                            <label for="teamMemberEmail">Team Member's Email</label>
+                            <input type="email" class="form-control" name="team[0][email]" placeholder="team@gmail.com" required >
+                            <!-- errors will go here -->
+                        </div>
+    
+                        <!-- Team Position -->
+                        <div id="name-group" class="form-group">
+                            <label for="teamMemberPosition">Team Member's Position</label>
+                            <input type="text" class="form-control" name="team[0][role]" id="teamMemberPosition"
+                                placeholder="Enter Position here" required >
+                            <!-- errors will go here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="button" id="addTeamMemberButton" class="btn btn-secondary">Add Team Member</button>
+                </div>
+            </fieldset>
+            <br>
+            <fieldset id="imageFieldset">
+                <legend>Chosen Images</legend>
+                <div id="imageList"></div>
+            </fieldset>  
+
+        <br>
+        <fieldset>
+           <legend>Project Images</legend>
+           <main id="content">
+            <div class="search form-group">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search for an image">
+                <br>
+                <span class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary me-md-2" type="button" id="searchButton">Search</button>
+                </span>
+            </input>
+            </div>
+            <br/>
+            <div id="result"  class="row" >
+                <!-- Search results will appear here -->
+            </div>
+            <!-- <div id="chosenImages" class="mt-4">
+                <h4>Chosen Images:</h4>
+                <div class="row" id="chosenImagesContainer"></div>
+            </div> -->
+        </main>
+    </div>
+       </fieldset>
+          <br>
+            <button type="submit"  id="submitBtn"class="btn btn-success">Submit <span ></span></button>
+            <br>
+            <br>
+        </form>
+    </div>
+    
+    <script src="/js/loadProjects.js"></script>
+</body>
+</html>

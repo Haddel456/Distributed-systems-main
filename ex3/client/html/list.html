@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/table.css">
+    <title>project</title>
+</head>
+<body>
+    <div class="container">
+        <h2>The Table of Project</h2>
+        <br>
+        <a href="add_project" id="addProjectBottom" class="btn btn-primary add">Add Project</a>
+        <br>
+        <table id="projectTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th data-sort="id">ID</th>
+                    <th class="name" data-sort="projectName">Project Name</th>
+                    <th class="name" data-sort="managerName">Manager Name</th>
+                    <th data-sort="startDate">Start Date</th>
+                    <th>Project Summary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Project rows will be appended here -->
+            </tbody>
+        </table>
+        <div class="main">
+        <div class="sort-btn">
+          <button class="btn btn-default sort " onclick="sortTableByProjectName()">Sort by Project Name</button>
+          <button class="btn btn-default sort" onclick="sortTableByManagerName()">Sort by Manager Name</button>
+          <button class="btn btn-default sort " onclick="sortTableByDate()">Sort by Start Date</button>  
+        </div class="add">
+        <a href="add_project" id="addProjectBottom" class="btn btn-primary add">Add new Project</a>
+    </div>
+  </div>
+
+    <div class="modal fade" id="editProjectModal" tabindex="-1" aria-labelledby="editProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editProjectModalLabel">Edit Project</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="editProjectForm">
+                <input type="hidden" id="editProjectId">
+                <fieldset>
+                  <legend>Project Details</legend>
+
+                  <div id="name-group" class="form-group">
+                    <label for="editId">Project Id</label>
+                    <input type="text" class="form-control" name="id" id="editId" placeholder="Enter project name" readonly required>
+                  </div>
+                  <div id="name-group" class="form-group">
+                    <label for="editProjectName">Project Name</label>
+                    <input type="text" class="form-control" name="name" id="editProjectName" placeholder="Enter project name" required>
+                  </div>
+                  <div id="description-group" class="form-group">
+                    <label for="editProjectDescription">Project Description</label>
+                    <input type="text" class="form-control" minlength="20" name="summary" id="editProjectDescription" placeholder="Enter project description">
+                  </div>
+                  <div id="start-date-group" class="form-group">
+                    <label for="editStartDate">Start Date</label>
+                    <input type="date" class="form-control" name="start_date" id="editStartDate" placeholder="Enter start date">
+                  </div>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Project Manager</legend>
+                    <div id="name-group" class="form-group">
+                        <label for="editManagerName">Manager's Name</label>
+                        <input type="text" class="form-control" name="manager[name]" id="editManagerName" placeholder="Enter Manager name"  readonly required>
+                      </div>
+
+                      <div id="name-group" class="form-group">
+                        <label for="editManagerEmail">Manager's Email</label>
+                        <input type="text" class="form-control" name="manager[email]" id="editManagerEmail" placeholder="Enter Manager Email"  readonly required>
+                      </div>
+
+                  </fieldset>
+                  <br>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="imageSearchModal" tabindex="-1" aria-labelledby="imageSearchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="imageSearchModalLabel">Search and Add Image</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              
+            </div>
+            <div class="modal-body">
+              <div class="search form-group">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search for an image">
+                <br>
+                <span class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button class="btn btn-primary me-md-2" type="button" id="searchButton">Search</button>
+                </span>
+              </div>
+              <br/>
+              <div id="result" class="row">
+                <!-- Search results will appear here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageModalLabel">Project Images</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="imageModalBody">
+        <!-- Images will be loaded here -->
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/image.js"></script>
+    <script src="/js/loadProjects.js"></script>
+    
+    
+</body>
+</html>

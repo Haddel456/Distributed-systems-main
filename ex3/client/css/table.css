@@ -1,0 +1,12 @@
+.btn-e {
+    width: 40%;
+}
+
+.sort-btn {
+    width: 50%;
+}
+
+.sort-btn .sort {
+    width: fit-content;
+    margin-bottom: 20px;
+}
